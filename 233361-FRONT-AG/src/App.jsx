@@ -89,6 +89,9 @@ export default function App() {
   const currentProfile = data?.perfiles?.[selectedProfile]
   const currentRanking = currentProfile?.ranking || []
   const bestByGeneration = currentProfile?.mejores_por_generacion || []
+  const geneticRepresentation = currentProfile?.representacion_genetica || null
+  const legalCompliance = currentProfile?.cumplimiento_legal || null
+  const artifacts = currentProfile?.artefactos || {}
   const configSummary = [
     ['Inicialización', initializationLabels[config.metodo_inicializacion]],
     ['Selección', selectionLabels[config.metodo_seleccion]],
@@ -357,6 +360,31 @@ export default function App() {
 
         {data ? (
           <>
+            <section className="panel panel--project">
+              <div className="panel__header">
+                <h3>Salidas esperadas del sistema</h3>
+                <span>Estructura alineada a la rúbrica de Algoritmos Genéticos</span>
+              </div>
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Salida</th>
+                      <th>Descripción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Salida 1</td><td>Gráfica de evolución de la aptitud (mejor, promedio, peor)</td></tr>
+                    <tr><td>Salida 2</td><td>Video resumen del proceso de optimización</td></tr>
+                    <tr><td>Salida 3</td><td>Tabla del mejor individuo por generación</td></tr>
+                    <tr><td>Salida 4</td><td>Configuración de optimización en formato tabla y diagrama</td></tr>
+                    <tr><td>Salida 5</td><td>Tabla descriptiva de asignación final y ranking de individuos</td></tr>
+                    <tr><td>Salida 6</td><td>Resumen de variables optimizadas y valor de aptitud</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
             <section className="profile-tabs">
               {Object.entries(data.perfiles).map(([key, profile]) => (
                 <button
@@ -379,40 +407,68 @@ export default function App() {
 
             <section className="panel panel--project">
               <div className="panel__header">
-                <h3>Salidas de gráfica y video</h3>
-                <span>Mejor configuración encontrada y evolución del costo</span>
+                <h3>Salida 1: Gráfica de evolución de la aptitud</h3>
+                <span>Tres curvas por generación: mejor, promedio y peor</span>
               </div>
-              <LineChart
-                title="Evolución del costo de optimización"
-                history={currentProfile?.historial || []}
-                bestGeneration={currentProfile?.generacion_mejor_global || null}
-              />
-              <RankingBarsChart ranking={currentRanking} />
-              {currentProfile?.artefactos ? (
-                <div className="artifacts-layout">
+              <div className="artifacts-layout">
+                <div className="artifacts-stack">
+                  <LineChart
+                    title="Evolución del costo de optimización"
+                    history={currentProfile?.historial || []}
+                    bestGeneration={currentProfile?.generacion_mejor_global || null}
+                  />
+                  <RankingBarsChart ranking={currentRanking} />
+                </div>
+                <div className="artifacts-panel">
+                  <div className="panel__header panel__header--compact">
+                    <h4>Salida 2: Video resumen</h4>
+                    <span>Evolución de la población a lo largo de generaciones</span>
+                  </div>
                   <video
                     className="result-video"
                     controls
                     preload="metadata"
-                    src={toAbsoluteUrl(currentProfile.artefactos.video_resumen)}
+                    src={toAbsoluteUrl(artifacts.video_resumen)}
                   />
-                  <div className="artifact-links">
-                    <a href={toAbsoluteUrl(currentProfile.artefactos.grafica_aptitud)} target="_blank" rel="noreferrer">Abrir gráfica exportada</a>
-                    <a href={toAbsoluteUrl(currentProfile.artefactos.video_resumen)} target="_blank" rel="noreferrer">Abrir video resumen</a>
-                  </div>
                 </div>
-              ) : null}
+              </div>
             </section>
 
             <section className="panel panel--project">
               <div className="panel__header">
-                <h3>Salidas de tablas</h3>
-                <span>Mejor por generación, horario y ranking final</span>
+                <h3>Salida 4: Configuración de optimización</h3>
+                <span>Tabla y diagrama del flujo del algoritmo genético</span>
+              </div>
+              <div className="config-summary-layout">
+                <table className="config-summary-table">
+                  <tbody>
+                    {configSummary.map(([label, value]) => (
+                      <tr key={label}>
+                        <th>{label}</th>
+                        <td>{value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="config-summary-diagram" aria-label="Diagrama de pasos del algoritmo genético">
+                  <span>Inicialización</span>
+                  <span>Selección</span>
+                  <span>Cruza</span>
+                  <span>Mutación</span>
+                  <span>Poda</span>
+                </div>
+              </div>
+            </section>
+
+            <section className="panel panel--project">
+              <div className="panel__header">
+                <h3>Salida 3: Tabla del mejor individuo por generación</h3>
+                <span>Medición realizada después de mutación y antes de poda</span>
               </div>
               <div className="table-stack">
                 <div>
-                  <h4>Tabla del mejor individuo por generación</h4>
-                  <p>Se toma después de mutación y antes de poda.</p>
+                  <h4>Historial generacional de aptitud</h4>
+                  <p>Incluye aptitud, déficit, horas extra, insatisfacción y violaciones legales.</p>
                   <div className="table-wrap table-wrap--wide">
                     <table>
                       <thead>
@@ -441,35 +497,32 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="config-summary-layout">
-                  <table className="config-summary-table">
+                <div className="table-wrap table-wrap--wide">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Variable optimizada</th>
+                        <th>Valor final</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                      {configSummary.map(([label, value]) => (
-                        <tr key={label}>
-                          <th>{label}</th>
-                          <td>{value}</td>
-                        </tr>
-                      ))}
+                      <tr><td>Déficit</td><td>{currentProfile.deficit_cobertura}</td></tr>
+                      <tr><td>Horas extra</td><td>{currentProfile.horas_extra}</td></tr>
+                      <tr><td>Insatisfacción</td><td>{currentProfile.insatisfaccion}</td></tr>
+                      <tr><td>Violaciones legales</td><td>{currentProfile.violaciones_legales}</td></tr>
                     </tbody>
                   </table>
-                  <div className="config-summary-diagram" aria-label="Diagrama de pasos del algoritmo genético">
-                    <span>Inicialización</span>
-                    <span>Selección</span>
-                    <span>Cruza</span>
-                    <span>Mutación</span>
-                    <span>Poda</span>
-                  </div>
                 </div>
               </div>
             </section>
 
             <section className="panel panel--project">
               <div className="panel__header">
-                <h3>Horario y ranking final</h3>
-                <span>Configuración del mejor perfil seleccionado</span>
+                <h3>Salida 5: Tabla descriptiva de la configuración final</h3>
+                <span>Asignación empleado-día (equivalente a paquete-posición en este dominio)</span>
               </div>
-              <div className="panel__header">
-                <h3>Resumen de la solución</h3>
+              <div className="panel__header panel__header--compact">
+                <h4>Salida 6: Resumen de variables optimizadas y aptitud</h4>
                 <span>{profileLabels[selectedProfile]}</span>
               </div>
               <div className="solution-grid">
@@ -480,6 +533,84 @@ export default function App() {
               </div>
               <ScheduleTable schedule={currentProfile.horario} />
               <RankingTable ranking={currentProfile.ranking} />
+            </section>
+
+            <section className="panel panel--project">
+              <div className="panel__header">
+                <h3>Cumplimiento legal</h3>
+                <span>Reglas revisadas y desglose de violaciones detectadas</span>
+              </div>
+              {legalCompliance ? (
+                <div className="table-stack">
+                  <div className="summary-boxes">
+                    <div><strong>Total violaciones</strong><span>{legalCompliance.total_violaciones}</span></div>
+                    <div><strong>Descanso semanal</strong><span>{legalCompliance.desglose?.descanso_semanal_insuficiente || 0}</span></div>
+                    <div><strong>Horas semanales</strong><span>{legalCompliance.desglose?.horas_semanales_excedidas || 0}</span></div>
+                    <div><strong>Fuera disponibilidad</strong><span>{legalCompliance.desglose?.turnos_fuera_de_disponibilidad || 0}</span></div>
+                    <div><strong>Descanso entre turnos</strong><span>{legalCompliance.desglose?.descanso_entre_turnos_insuficiente || 0}</span></div>
+                    <div><strong>Noches consecutivas</strong><span>{legalCompliance.desglose?.noches_consecutivas_excesivas || 0}</span></div>
+                  </div>
+                  <ul className="rule-list">
+                    {(legalCompliance.reglas || []).map((rule) => (
+                      <li key={rule}>{rule}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </section>
+
+            <section className="panel panel--project">
+              <div className="panel__header">
+                <h3>Representación genética</h3>
+                <span>Cromosoma, genes, alelos y locus del mejor individuo</span>
+              </div>
+              {geneticRepresentation ? (
+                <div className="genetic-layout">
+                  <div className="config-summary-layout">
+                    <table className="config-summary-table">
+                      <tbody>
+                        <tr><th>Tipo de cromosoma</th><td>{geneticRepresentation.tipo_cromosoma}</td></tr>
+                        <tr><th>Longitud</th><td>{geneticRepresentation.longitud_cromosoma}</td></tr>
+                        <tr><th>Gen por posición</th><td>{geneticRepresentation.gen_por_posicion}</td></tr>
+                        <tr><th>Locus</th><td>{geneticRepresentation.locus}</td></tr>
+                        <tr><th>Alelos posibles</th><td>{(geneticRepresentation.alelos_posibles || []).join(', ')}</td></tr>
+                      </tbody>
+                    </table>
+                    <div className="config-summary-diagram" aria-label="Resumen de cromosoma">
+                      <span>Cromosoma</span>
+                      <span>Gen</span>
+                      <span>Alelo</span>
+                      <span>Locus</span>
+                    </div>
+                  </div>
+                  <div className="table-wrap table-wrap--wide">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Empleado</th>
+                          <th>Lun</th>
+                          <th>Mar</th>
+                          <th>Mié</th>
+                          <th>Jue</th>
+                          <th>Vie</th>
+                          <th>Sáb</th>
+                          <th>Dom</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(geneticRepresentation.cromosoma || []).map((row, index) => (
+                          <tr key={`${row?.[0] || 'row'}-${index}`}>
+                            <td>Emp {index + 1}</td>
+                            {(row || []).map((gene, geneIndex) => (
+                              <td key={geneIndex}><span className={`shift-pill shift-pill--${gene}`}>{gene}</span></td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : null}
             </section>
           </>
         ) : (

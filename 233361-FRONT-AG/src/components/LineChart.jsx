@@ -34,10 +34,10 @@ export function LineChart({ title, history, bestGeneration }) {
   const width = 900
   const height = 360
   const padding = 40
-  const toCost = (value) => 1 - Number(value || 0)
+  const toCost = (value) => 1 / (Number(value || 0) + 0.000001)
   const series = [
     {
-      name: 'Peor costo vs generación',
+      name: 'Mayor costo vs generación',
       color: '#ea4335',
       data: history.map((item) => ({ index: item.generacion - 1, value: toCost(item.peor) })),
     },
@@ -47,7 +47,7 @@ export function LineChart({ title, history, bestGeneration }) {
       data: history.map((item) => ({ index: item.generacion - 1, value: toCost(item.promedio) })),
     },
     {
-      name: 'Mejor costo vs generación',
+      name: 'Menor costo vs generación',
       color: '#1a73e8',
       data: history.map((item) => ({ index: item.generacion - 1, value: toCost(item.mejor) })),
     },

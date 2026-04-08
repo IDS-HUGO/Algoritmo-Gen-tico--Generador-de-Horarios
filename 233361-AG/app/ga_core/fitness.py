@@ -45,6 +45,13 @@ def evaluate_individual(
     overtime_hours = 0
     dissatisfaction = 0
     legal_violations = 0
+    legal_breakdown = {
+        "descanso_semanal_insuficiente": 0,
+        "horas_semanales_excedidas": 0,
+        "turnos_fuera_de_disponibilidad": 0,
+        "descanso_entre_turnos_insuficiente": 0,
+        "noches_consecutivas_excesivas": 0,
+    }
 
     cobertura_por_dia: dict[str, dict[str, int]] = {dia: {"manana": 0, "tarde": 0, "noche": 0} for dia in DIAS}
     employee_summaries: list[dict[str, Any]] = []
@@ -60,12 +67,15 @@ def evaluate_individual(
         dias_descanso = sum(1 for turno in schedule if turno == "descanso")
         if dias_descanso < config.dias_descanso_minimos:
             employee_violations += 1
+            legal_breakdown["descanso_semanal_insuficiente"] += 1
 
         if weekly_hours > config.horas_semanales_maximas:
             employee_violations += 1
+            legal_breakdown["horas_semanales_excedidas"] += 1
 
         if count_consecutive_nights(schedule) > config.noches_consecutivas_maximas:
             employee_violations += 1
+            legal_breakdown["noches_consecutivas_excesivas"] += 1
 
         for indice_dia, dia in enumerate(DIAS):
             turno = schedule[indice_dia]
@@ -75,6 +85,7 @@ def evaluate_individual(
             if turno != "descanso":
                 if turno not in employee["disponibilidad"].get(dia, ["descanso"]):
                     employee_violations += 1
+                    legal_breakdown["turnos_fuera_de_disponibilidad"] += 1
                 cobertura_por_dia[dia][turno] += 1
 
             if indice_dia > 0:
@@ -82,6 +93,7 @@ def evaluate_individual(
                 if turno_anterior != "descanso" and turno != "descanso":
                     if rest_hours_between(turno_anterior, turno) < config.horas_descanso_minimas:
                         employee_violations += 1
+                        legal_breakdown["descanso_entre_turnos_insuficiente"] += 1
 
         dissatisfaction += employee_dissatisfaction
         legal_violations += employee_violations
@@ -120,6 +132,7 @@ def evaluate_individual(
         "overtime_hours": overtime_hours,
         "insatisfaccion": dissatisfaction,
         "violaciones_legales": legal_violations,
+        "legal_breakdown": legal_breakdown,
         "resumenes_empleados": employee_summaries,
         "cobertura_por_dia": cobertura_por_dia,
     }

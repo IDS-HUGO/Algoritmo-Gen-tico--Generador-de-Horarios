@@ -1,0 +1,4 @@
+id,nombre,horas_contrato,tarifa_horaria,pref_descanso,pref_manana,pref_tarde,pref_noche,lunes,martes,miercoles,jueves,viernes,sabado,domingo
+1,Ana Ruiz,20,12.5,5,2,5,1,manana|tarde,manana|tarde,manana|tarde,manana|tarde,manana|tarde,descanso,descanso
+2,Luis Vega,20,11.0,4,4,2,2,manana|tarde,manana|tarde,manana|tarde,manana|tarde,manana|tarde,manana,descanso
+3,Carla Soto,24,13.0,4,1,3,5,noche,noche,noche,noche,noche,noche,noche

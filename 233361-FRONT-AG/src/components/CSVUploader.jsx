@@ -24,6 +24,7 @@ export function CSVUploader({ onEmployeesLoaded, onDemandLoaded }) {
       descanso: 'descanso',
       morning: 'manana',
       manana: 'manana',
+      mañana: 'manana',
       afternoon: 'tarde',
       tarde: 'tarde',
       night: 'noche',
@@ -155,9 +156,9 @@ export function CSVUploader({ onEmployeesLoaded, onDemandLoaded }) {
       <p className="csv-hint">
         <strong>Formato Empleados:</strong> nombre, horas_contrato, tarifa_horaria, lunes, martes, miercoles, jueves, viernes, sabado, domingo, notas
         <br />
-        <strong>Formato Demanda:</strong> dia, manana, tarde, noche
+        <strong>Formato Demanda:</strong> dia, mañana, tarde, noche
         <br />
-        <strong>Disponibilidad:</strong> separa turnos con | (ej: "manana|tarde", "todos", "descanso")
+        <strong>Disponibilidad:</strong> separa turnos con | (ej: "mañana|tarde", "todos", "descanso")
       </p>
     </section>
   )

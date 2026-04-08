@@ -68,6 +68,8 @@ class SolutionSummary(BaseModel):
     horas_extra: int
     insatisfaccion: int
     violaciones_legales: int
+    cumplimiento_legal: dict[str, Any] = Field(default_factory=dict)
+    representacion_genetica: dict[str, Any] = Field(default_factory=dict)
     horario: list[dict[str, Any]]
     historial: list[GenerationPoint]
     mejores_por_generacion: list[dict[str, Any]]

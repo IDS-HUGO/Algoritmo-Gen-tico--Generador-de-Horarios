@@ -1,0 +1,175 @@
+{
+  "escenario": "validacion_csv_json_alterno",
+  "entrada": {
+    "empleados_csv": "D:\\UNIVERSIDAD\\IA\\233361-AG-HORARIOS\\assets\\validacion\\empleados_validacion.csv",
+    "demanda_csv": "D:\\UNIVERSIDAD\\IA\\233361-AG-HORARIOS\\assets\\validacion\\demanda_validacion.csv",
+    "payload_json": "D:\\UNIVERSIDAD\\IA\\233361-AG-HORARIOS\\assets\\validacion\\payload_validacion.json"
+  },
+  "salida": {
+    "A": {
+      "aptitud": 0.02870208,
+      "generacion_mejor_global": 10,
+      "variables_optimizadas": {
+        "deficit_cobertura": 45,
+        "horas_extra": 64,
+        "insatisfaccion": 7,
+        "violaciones_legales": 3
+      },
+      "cumplimiento_legal": {
+        "total_violaciones": 3,
+        "desglose": {
+          "descanso_semanal_insuficiente": 1,
+          "horas_semanales_excedidas": 1,
+          "turnos_fuera_de_disponibilidad": 0,
+          "descanso_entre_turnos_insuficiente": 0,
+          "noches_consecutivas_excesivas": 1
+        },
+        "reglas": [
+          "descanso minimo entre turnos >= 12 horas",
+          "horas semanales <= 48",
+          "al menos 1 dia de descanso semanal",
+          "turnos asignados dentro de la disponibilidad declarada",
+          "maximo 3 noches consecutivas"
+        ]
+      },
+      "representacion_genetica": {
+        "tipo_cromosoma": "matriz_empleado_por_dia",
+        "longitud_cromosoma": 21,
+        "gen_por_posicion": "turno_asignado",
+        "alelos_posibles": [
+          "descanso",
+          "manana",
+          "tarde",
+          "noche"
+        ],
+        "locus": "empleado x dia_de_la_semana",
+        "primer_cromosoma_ejemplo": [
+          "tarde",
+          "tarde",
+          "descanso",
+          "tarde",
+          "descanso",
+          "descanso",
+          "descanso"
+        ]
+      },
+      "evidencias_exportadas": {
+        "grafica_aptitud": "/outputs/run_20260408_005007/perfil_a/evolucion_aptitud.png",
+        "tabla_mejor_por_generacion": "/outputs/run_20260408_005007/perfil_a/mejor_por_generacion.csv",
+        "tabla_ranking": "/outputs/run_20260408_005007/perfil_a/ranking_final.csv",
+        "tabla_horario": "/outputs/run_20260408_005007/perfil_a/horario_mejor_global.csv",
+        "video_resumen": "/outputs/run_20260408_005007/perfil_a/resumen_optimizacion.mp4"
+      }
+    },
+    "B": {
+      "aptitud": 0.05781983,
+      "generacion_mejor_global": 3,
+      "variables_optimizadas": {
+        "deficit_cobertura": 43,
+        "horas_extra": 80,
+        "insatisfaccion": 7,
+        "violaciones_legales": 3
+      },
+      "cumplimiento_legal": {
+        "total_violaciones": 3,
+        "desglose": {
+          "descanso_semanal_insuficiente": 1,
+          "horas_semanales_excedidas": 1,
+          "turnos_fuera_de_disponibilidad": 0,
+          "descanso_entre_turnos_insuficiente": 0,
+          "noches_consecutivas_excesivas": 1
+        },
+        "reglas": [
+          "descanso minimo entre turnos >= 12 horas",
+          "horas semanales <= 48",
+          "al menos 1 dia de descanso semanal",
+          "turnos asignados dentro de la disponibilidad declarada",
+          "maximo 3 noches consecutivas"
+        ]
+      },
+      "representacion_genetica": {
+        "tipo_cromosoma": "matriz_empleado_por_dia",
+        "longitud_cromosoma": 21,
+        "gen_por_posicion": "turno_asignado",
+        "alelos_posibles": [
+          "descanso",
+          "manana",
+          "tarde",
+          "noche"
+        ],
+        "locus": "empleado x dia_de_la_semana",
+        "primer_cromosoma_ejemplo": [
+          "tarde",
+          "tarde",
+          "tarde",
+          "tarde",
+          "tarde",
+          "descanso",
+          "descanso"
+        ]
+      },
+      "evidencias_exportadas": {
+        "grafica_aptitud": "/outputs/run_20260408_005007/perfil_b/evolucion_aptitud.png",
+        "tabla_mejor_por_generacion": "/outputs/run_20260408_005007/perfil_b/mejor_por_generacion.csv",
+        "tabla_ranking": "/outputs/run_20260408_005007/perfil_b/ranking_final.csv",
+        "tabla_horario": "/outputs/run_20260408_005007/perfil_b/horario_mejor_global.csv",
+        "video_resumen": "/outputs/run_20260408_005007/perfil_b/resumen_optimizacion.mp4"
+      }
+    },
+    "C": {
+      "aptitud": 0.08257613,
+      "generacion_mejor_global": 2,
+      "variables_optimizadas": {
+        "deficit_cobertura": 43,
+        "horas_extra": 80,
+        "insatisfaccion": 7,
+        "violaciones_legales": 3
+      },
+      "cumplimiento_legal": {
+        "total_violaciones": 3,
+        "desglose": {
+          "descanso_semanal_insuficiente": 1,
+          "horas_semanales_excedidas": 1,
+          "turnos_fuera_de_disponibilidad": 0,
+          "descanso_entre_turnos_insuficiente": 0,
+          "noches_consecutivas_excesivas": 1
+        },
+        "reglas": [
+          "descanso minimo entre turnos >= 12 horas",
+          "horas semanales <= 48",
+          "al menos 1 dia de descanso semanal",
+          "turnos asignados dentro de la disponibilidad declarada",
+          "maximo 3 noches consecutivas"
+        ]
+      },
+      "representacion_genetica": {
+        "tipo_cromosoma": "matriz_empleado_por_dia",
+        "longitud_cromosoma": 21,
+        "gen_por_posicion": "turno_asignado",
+        "alelos_posibles": [
+          "descanso",
+          "manana",
+          "tarde",
+          "noche"
+        ],
+        "locus": "empleado x dia_de_la_semana",
+        "primer_cromosoma_ejemplo": [
+          "tarde",
+          "tarde",
+          "tarde",
+          "tarde",
+          "tarde",
+          "descanso",
+          "descanso"
+        ]
+      },
+      "evidencias_exportadas": {
+        "grafica_aptitud": "/outputs/run_20260408_005007/perfil_c/evolucion_aptitud.png",
+        "tabla_mejor_por_generacion": "/outputs/run_20260408_005007/perfil_c/mejor_por_generacion.csv",
+        "tabla_ranking": "/outputs/run_20260408_005007/perfil_c/ranking_final.csv",
+        "tabla_horario": "/outputs/run_20260408_005007/perfil_c/horario_mejor_global.csv",
+        "video_resumen": "/outputs/run_20260408_005007/perfil_c/resumen_optimizacion.mp4"
+      }
+    }
+  }
+}

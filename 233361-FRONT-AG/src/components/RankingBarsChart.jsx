@@ -15,7 +15,7 @@ export function RankingBarsChart({ ranking }) {
   return (
     <section className="chart-card chart-card--bars">
       <div className="chart-card__header">
-        <h3>Evolución de la población</h3>
+        <h3>Ranking final de individuos</h3>
         <div className="chart-legend">
           <span>
             <i style={{ background: '#1a73e8' }} />

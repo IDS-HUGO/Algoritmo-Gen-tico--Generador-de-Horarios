@@ -42,6 +42,16 @@ def build_schedule_rows(employee_summaries: list[dict[str, Any]]) -> list[dict[s
 
 def build_solution_summary(label: str, result: dict[str, Any]) -> dict[str, Any]:
     best_evaluation = result["best_evaluation"]
+    best_individual = result["best_individual"]
+    chromosome_length = len(best_individual) * len(best_individual[0]) if best_individual else 0
+    genetic_representation = {
+        "tipo_cromosoma": "matriz_empleado_por_dia",
+        "longitud_cromosoma": chromosome_length,
+        "gen_por_posicion": "turno_asignado",
+        "alelos_posibles": ["descanso", "manana", "tarde", "noche"],
+        "locus": "empleado x dia_de_la_semana",
+        "cromosoma": best_individual,
+    }
     return {
         "etiqueta": label,
         "aptitud": round(best_evaluation["fitness"], 8),
@@ -50,6 +60,18 @@ def build_solution_summary(label: str, result: dict[str, Any]) -> dict[str, Any]
         "horas_extra": best_evaluation["overtime_hours"],
         "insatisfaccion": best_evaluation["insatisfaccion"],
         "violaciones_legales": best_evaluation["violaciones_legales"],
+        "cumplimiento_legal": {
+            "total_violaciones": best_evaluation["violaciones_legales"],
+            "desglose": best_evaluation["legal_breakdown"],
+            "reglas": [
+                "descanso minimo entre turnos >= 12 horas",
+                "horas semanales <= 48",
+                "al menos 1 dia de descanso semanal",
+                "turnos asignados dentro de la disponibilidad declarada",
+                "maximo 3 noches consecutivas",
+            ],
+        },
+        "representacion_genetica": genetic_representation,
         "horario": build_schedule_rows(best_evaluation["resumenes_empleados"]),
         "historial": result["historial"],
         "mejores_por_generacion": result["mejores_por_generacion"],

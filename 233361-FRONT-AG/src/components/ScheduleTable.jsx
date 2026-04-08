@@ -9,6 +9,13 @@ const ETIQUETAS_DIA = {
   domingo: 'Dom',
 }
 
+const ETIQUETAS_TURNO = {
+  descanso: 'Descanso',
+  manana: 'Mañana',
+  tarde: 'Tarde',
+  noche: 'Noche',
+}
+
 export function ScheduleTable({ schedule }) {
   return (
     <section className="panel">
@@ -36,7 +43,7 @@ export function ScheduleTable({ schedule }) {
                 <td>{row.nombre_empleado}</td>
                 {DIAS.map((dia) => (
                   <td key={dia}>
-                    <span className={`shift-pill shift-pill--${row[dia]}`}>{row[dia]}</span>
+                    <span className={`shift-pill shift-pill--${row[dia]}`}>{ETIQUETAS_TURNO[row[dia]] || row[dia]}</span>
                   </td>
                 ))}
                 <td>{row.horas}</td>

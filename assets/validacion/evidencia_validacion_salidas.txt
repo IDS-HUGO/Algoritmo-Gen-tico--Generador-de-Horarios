@@ -1,0 +1,37 @@
+EVIDENCIA DE SALIDAS OPTIMIZADAS
+
+Perfil A
+  Aptitud: 0.02870208
+  Gen mejor global: 10
+  Deficit cobertura: 45
+  Horas extra: 64
+  Insatisfaccion: 7
+  Violaciones legales: 3
+  Desglose legal: {'descanso_semanal_insuficiente': 1, 'horas_semanales_excedidas': 1, 'turnos_fuera_de_disponibilidad': 0, 'descanso_entre_turnos_insuficiente': 0, 'noches_consecutivas_excesivas': 1}
+  Reglas legales: ['descanso minimo entre turnos >= 12 horas', 'horas semanales <= 48', 'al menos 1 dia de descanso semanal', 'turnos asignados dentro de la disponibilidad declarada', 'maximo 3 noches consecutivas']
+  Representacion genetica: {'tipo_cromosoma': 'matriz_empleado_por_dia', 'longitud_cromosoma': 21, 'gen_por_posicion': 'turno_asignado', 'alelos_posibles': ['descanso', 'manana', 'tarde', 'noche'], 'locus': 'empleado x dia_de_la_semana', 'primer_cromosoma_ejemplo': ['tarde', 'tarde', 'descanso', 'tarde', 'descanso', 'descanso', 'descanso']}
+  Artefactos: {'grafica_aptitud': '/outputs/run_20260408_005007/perfil_a/evolucion_aptitud.png', 'tabla_mejor_por_generacion': '/outputs/run_20260408_005007/perfil_a/mejor_por_generacion.csv', 'tabla_ranking': '/outputs/run_20260408_005007/perfil_a/ranking_final.csv', 'tabla_horario': '/outputs/run_20260408_005007/perfil_a/horario_mejor_global.csv', 'video_resumen': '/outputs/run_20260408_005007/perfil_a/resumen_optimizacion.mp4'}
+
+Perfil B
+  Aptitud: 0.05781983
+  Gen mejor global: 3
+  Deficit cobertura: 43
+  Horas extra: 80
+  Insatisfaccion: 7
+  Violaciones legales: 3
+  Desglose legal: {'descanso_semanal_insuficiente': 1, 'horas_semanales_excedidas': 1, 'turnos_fuera_de_disponibilidad': 0, 'descanso_entre_turnos_insuficiente': 0, 'noches_consecutivas_excesivas': 1}
+  Reglas legales: ['descanso minimo entre turnos >= 12 horas', 'horas semanales <= 48', 'al menos 1 dia de descanso semanal', 'turnos asignados dentro de la disponibilidad declarada', 'maximo 3 noches consecutivas']
+  Representacion genetica: {'tipo_cromosoma': 'matriz_empleado_por_dia', 'longitud_cromosoma': 21, 'gen_por_posicion': 'turno_asignado', 'alelos_posibles': ['descanso', 'manana', 'tarde', 'noche'], 'locus': 'empleado x dia_de_la_semana', 'primer_cromosoma_ejemplo': ['tarde', 'tarde', 'tarde', 'tarde', 'tarde', 'descanso', 'descanso']}
+  Artefactos: {'grafica_aptitud': '/outputs/run_20260408_005007/perfil_b/evolucion_aptitud.png', 'tabla_mejor_por_generacion': '/outputs/run_20260408_005007/perfil_b/mejor_por_generacion.csv', 'tabla_ranking': '/outputs/run_20260408_005007/perfil_b/ranking_final.csv', 'tabla_horario': '/outputs/run_20260408_005007/perfil_b/horario_mejor_global.csv', 'video_resumen': '/outputs/run_20260408_005007/perfil_b/resumen_optimizacion.mp4'}
+
+Perfil C
+  Aptitud: 0.08257613
+  Gen mejor global: 2
+  Deficit cobertura: 43
+  Horas extra: 80
+  Insatisfaccion: 7
+  Violaciones legales: 3
+  Desglose legal: {'descanso_semanal_insuficiente': 1, 'horas_semanales_excedidas': 1, 'turnos_fuera_de_disponibilidad': 0, 'descanso_entre_turnos_insuficiente': 0, 'noches_consecutivas_excesivas': 1}
+  Reglas legales: ['descanso minimo entre turnos >= 12 horas', 'horas semanales <= 48', 'al menos 1 dia de descanso semanal', 'turnos asignados dentro de la disponibilidad declarada', 'maximo 3 noches consecutivas']
+  Representacion genetica: {'tipo_cromosoma': 'matriz_empleado_por_dia', 'longitud_cromosoma': 21, 'gen_por_posicion': 'turno_asignado', 'alelos_posibles': ['descanso', 'manana', 'tarde', 'noche'], 'locus': 'empleado x dia_de_la_semana', 'primer_cromosoma_ejemplo': ['tarde', 'tarde', 'tarde', 'tarde', 'tarde', 'descanso', 'descanso']}
+  Artefactos: {'grafica_aptitud': '/outputs/run_20260408_005007/perfil_c/evolucion_aptitud.png', 'tabla_mejor_por_generacion': '/outputs/run_20260408_005007/perfil_c/mejor_por_generacion.csv', 'tabla_ranking': '/outputs/run_20260408_005007/perfil_c/ranking_final.csv', 'tabla_horario': '/outputs/run_20260408_005007/perfil_c/horario_mejor_global.csv', 'video_resumen': '/outputs/run_20260408_005007/perfil_c/resumen_optimizacion.mp4'}

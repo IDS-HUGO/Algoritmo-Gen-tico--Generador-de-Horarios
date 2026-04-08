@@ -1,0 +1,4 @@
+id_empleado,nombre_empleado,lunes,martes,miercoles,jueves,viernes,sabado,domingo,horas,horas_extra,insatisfaccion,violaciones_legales
+1,Ana Perez,manana,manana,manana,manana,manana,manana,descanso,48,8,6,0
+2,Luis Gomez,manana,tarde,tarde,tarde,descanso,tarde,descanso,40,0,5,0
+3,Maria Lopez,tarde,tarde,tarde,tarde,tarde,descanso,descanso,40,20,5,0

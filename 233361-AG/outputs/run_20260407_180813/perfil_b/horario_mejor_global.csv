@@ -1,0 +1,3 @@
+id_empleado,nombre_empleado,lunes,martes,miercoles,jueves,viernes,sabado,domingo,horas,horas_extra,insatisfaccion,violaciones_legales
+1,Ana,manana,descanso,descanso,descanso,descanso,descanso,descanso,8,0,1,0
+2,Luis,tarde,tarde,descanso,descanso,tarde,tarde,tarde,40,0,2,0

@@ -1,0 +1,60 @@
+Empleados (JSON array)
+[
+  {
+    "id": 1,
+    "nombre": "Ana Perez",
+    "horas_contrato": 40,
+    "tarifa_horaria": 12.5,
+    "disponibilidad": {
+      "lunes": ["manana", "tarde"],
+      "martes": ["manana", "tarde"],
+      "miercoles": ["manana", "tarde"],
+      "jueves": ["manana", "tarde"],
+      "viernes": ["manana", "tarde"],
+      "sabado": ["manana"],
+      "domingo": ["descanso"]
+    },
+    "preferencias": {
+      "descanso": 5,
+      "manana": 4,
+      "tarde": 4,
+      "noche": 2
+    },
+    "historial": [],
+    "notas_especiales": []
+  },
+  {
+    "id": 2,
+    "nombre": "Luis Gomez",
+    "horas_contrato": 40,
+    "tarifa_horaria": 13,
+    "disponibilidad": {
+      "lunes": ["manana", "tarde", "noche", "descanso"],
+      "martes": ["manana", "tarde", "noche", "descanso"],
+      "miercoles": ["manana", "tarde", "noche", "descanso"],
+      "jueves": ["manana", "tarde", "noche", "descanso"],
+      "viernes": ["manana", "tarde", "noche", "descanso"],
+      "sabado": ["manana", "tarde"],
+      "domingo": ["descanso"]
+    },
+    "preferencias": {
+      "descanso": 5,
+      "manana": 3,
+      "tarde": 4,
+      "noche": 2
+    },
+    "historial": [],
+    "notas_especiales": []
+  }
+]
+
+Demanda semanal (JSON object)
+{
+  "lunes": { "manana": 3, "tarde": 3, "noche": 2 },
+  "martes": { "manana": 3, "tarde": 3, "noche": 2 },
+  "miercoles": { "manana": 3, "tarde": 3, "noche": 2 },
+  "jueves": { "manana": 3, "tarde": 3, "noche": 2 },
+  "viernes": { "manana": 4, "tarde": 4, "noche": 2 },
+  "sabado": { "manana": 4, "tarde": 4, "noche": 3 },
+  "domingo": { "manana": 3, "tarde": 3, "noche": 2 }
+}

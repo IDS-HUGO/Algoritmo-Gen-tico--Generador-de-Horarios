@@ -1,0 +1,4 @@
+nombre,horas_contrato,tarifa_horaria,lunes,martes,miercoles,jueves,viernes,sabado,domingo,notas
+Ana Perez,40,12.5,manana|tarde,manana|tarde,manana|tarde,manana|tarde,manana|tarde,manana,descanso,
+Luis Gomez,40,13,todos,todos,todos,todos,todos,manana|tarde,descanso,
+Maria Lopez,20,11,tarde,tarde,tarde,tarde,tarde,descanso,descanso,estudia por la manana

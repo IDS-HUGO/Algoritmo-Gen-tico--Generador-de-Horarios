@@ -1,0 +1,39 @@
+# Comandos para usar SHIFTPLANGA
+
+## Backend
+
+```powershell
+cd d:\UNIVERSIDAD\IA\233361-AG-HORARIOS\233361-AG
+& d:\UNIVERSIDAD\IA\233361-AG-HORARIOS\.venv\Scripts\Activate.ps1
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+## Frontend
+
+```powershell
+cd d:\UNIVERSIDAD\IA\233361-AG-HORARIOS\233361-FRONT-AG
+npm install
+npm run dev -- --host 127.0.0.1 --port 5173
+```
+
+## Verificacion rapida
+
+```powershell
+cd d:\UNIVERSIDAD\IA\233361-AG-HORARIOS\233361-AG
+python -m compileall app
+
+cd d:\UNIVERSIDAD\IA\233361-AG-HORARIOS\233361-FRONT-AG
+npm run build
+```
+
+## Probar API
+
+```powershell
+Invoke-WebRequest -UseBasicParsing http://127.0.0.1:8000/api/health
+Invoke-WebRequest -UseBasicParsing http://127.0.0.1:8000/api/sample-data
+```
+
+## Detener procesos
+
+- Cierra la terminal del backend con `Ctrl + C`.
+- Cierra la terminal del frontend con `Ctrl + C`.
